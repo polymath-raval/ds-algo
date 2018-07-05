@@ -51,8 +51,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
   private int diameterFromNode(Node _root) {
     return _root == null ? 0 :
-        Integer.max(
-            Integer.max(diameterFromNode(_root.left), diameterFromNode(_root.right)),
+        Integer.max(Integer.max(diameterFromNode(_root.left), diameterFromNode(_root.right)),
             1 + heightFromNode(_root.left) + heightFromNode(_root.right));
   }
 
