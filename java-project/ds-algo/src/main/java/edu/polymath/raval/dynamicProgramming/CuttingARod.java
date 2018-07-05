@@ -41,7 +41,7 @@ public class CuttingARod {
     return rods;
   }
 
-  public List<Integer> cut(int totalLength, int[] denomination, int[] value){
+  public List<Integer> cut(int totalLength, int[] denomination, int[] value) {
     return findRodLengths(generateMatrix(totalLength, denomination, value), denomination, value);
   }
 

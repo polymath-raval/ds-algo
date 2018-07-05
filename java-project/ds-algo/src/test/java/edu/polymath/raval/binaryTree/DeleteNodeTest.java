@@ -10,12 +10,13 @@ import org.junit.Test;
 public class DeleteNodeTest {
 
   @Test
-  public void deleteTree(){
+  public void deleteTree() {
     BinarySearchTree bst = GenerateTree.generateBSTMedium();
     bst.deleteTree();
   }
+
   @Test
-  public void deleteNode(){
+  public void deleteNode() {
     deleteNode(TraversalType.DEPTH_FIRST_INORDER);
     deleteNode(TraversalType.DEPTH_FIRST_PREORDER);
     deleteNode(TraversalType.DEPTH_FIRST_POSTORDER);
@@ -25,11 +26,11 @@ public class DeleteNodeTest {
   public void deleteNode(TraversalType traversalType) {
     BinarySearchTree<Integer> bst = GenerateTree.generateBSTShort();
 
-    List<Integer> deleteSequence =  bst.traverse(traversalType);
+    List<Integer> deleteSequence = bst.traverse(traversalType);
     Integer sum = deleteSequence.stream().collect(Collectors.summingInt(value -> value));
 
     int deleteSum = 0;
-    for(Integer integer:deleteSequence){
+    for (Integer integer : deleteSequence) {
       deleteSum = deleteSum + integer;
       Assert.assertTrue(bst.delete(integer));
       Assert.assertEquals(new Long(sum - deleteSum), new Long(sumFromTree(bst, traversalType)));

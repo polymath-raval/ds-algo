@@ -14,7 +14,7 @@ public class WeightedJobScheduling {
         if (!isOverlapping(interestJobs[i], interestJobs[j])) {
           if ((jobOutputs[i].totalProfit < interestJobs[i].profit + jobOutputs[j].totalProfit) ||
               (jobOutputs[i].totalProfit == interestJobs[i].profit + jobOutputs[j].totalProfit
-                  && jobOutputs[i].selectedJobs.size() < jobOutputs[j].selectedJobs.size() + 1 )){
+                  && jobOutputs[i].selectedJobs.size() < jobOutputs[j].selectedJobs.size() + 1)) {
             jobOutputs[i].selectedJobs.clear();
             jobOutputs[i].selectedJobs.add(interestJobs[i]);
             jobOutputs[i].selectedJobs.addAll(jobOutputs[j].selectedJobs);

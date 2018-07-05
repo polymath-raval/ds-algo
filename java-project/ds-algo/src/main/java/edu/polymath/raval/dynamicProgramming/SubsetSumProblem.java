@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SubsetSumProblem {
 
-  public List<Integer>  checkIfSubSetSumPossible(int[] set, int sumValue) {
+  public List<Integer> checkIfSubSetSumPossible(int[] set, int sumValue) {
     boolean[][] outputMatrix = new boolean[set.length + 1][sumValue + 1];
     for (int i = 0; i < outputMatrix.length; i++) {
       outputMatrix[i][0] = true;
@@ -27,11 +27,11 @@ public class SubsetSumProblem {
       int i = set.length;
       int j = sumValue;
       while (i > 0 && j > 0) {
-        if(outputMatrix[i][j] == outputMatrix[i-1][j]){
+        if (outputMatrix[i][j] == outputMatrix[i - 1][j]) {
           i--;
-        }else{
-          firstCombination.add(set[i-1]);
-          j=j-set[i-1];
+        } else {
+          firstCombination.add(set[i - 1]);
+          j = j - set[i - 1];
           i--;
         }
       }

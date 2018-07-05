@@ -27,12 +27,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return new SucessionFinderUtility<T>().findSuccessor(root, data);
   }
 
-  public boolean deleteTree(){
+  public boolean deleteTree() {
     boolean deleted = true;
-    print();
-    for(T deleteCandidate:traverse(TraversalType.DEPTH_FIRST_POSTORDER)){
+    for (T deleteCandidate : traverse(TraversalType.DEPTH_FIRST_POSTORDER)) {
       deleted = deleted && delete(deleteCandidate);
-      print();
     }
     return deleted;
   }
@@ -70,7 +68,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
   public void print() {
     if (root != null) {
       print(root, "", true);
-    }else{
+    } else {
       System.out.println("Empty");
     }
   }

@@ -1,6 +1,7 @@
 package edu.polymath.raval.binaryTree;
 
 class InsertNodeUtility<T extends Comparable<T>> {
+
   void insert(Node<T> _root, Node<T> _dataNode) {
     int comparision = _root.data.compareTo(_dataNode.data);
     if (comparision == 0) {

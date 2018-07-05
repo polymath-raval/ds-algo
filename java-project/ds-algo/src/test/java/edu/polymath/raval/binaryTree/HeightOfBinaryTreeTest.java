@@ -8,7 +8,7 @@ import org.junit.Test;
 public class HeightOfBinaryTreeTest {
 
   @Test
-  public void heightOfBinaryTree(){
+  public void heightOfBinaryTree() {
     BinarySearchTree bst = GenerateTree.generateBSTShort();
     List<Integer> deleteSequence = bst.traverse(TraversalType.DEPTH_FIRST_INORDER);
     Assert.assertEquals(4, bst.heightOfBinaryTree());

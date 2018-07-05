@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-class TraversalUtility<T extends Comparable<T>>  {
+class TraversalUtility<T extends Comparable<T>> {
 
   private void inOrderTraversal(Node<T> _root, List<T> _result) {
     if (_root != null) {

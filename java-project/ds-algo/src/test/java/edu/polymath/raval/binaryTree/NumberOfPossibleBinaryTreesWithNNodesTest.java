@@ -14,7 +14,7 @@ public class NumberOfPossibleBinaryTreesWithNNodesTest {
     };
 
     NumberOfPossibleBinaryTreesWithNNodes solution = new NumberOfPossibleBinaryTreesWithNNodes();
-    for(int i=0;i<catalanNumber.length;i++){
+    for (int i = 0; i < catalanNumber.length; i++) {
       Assert.assertEquals(catalanNumber[i], solution.count(i));
     }
   }

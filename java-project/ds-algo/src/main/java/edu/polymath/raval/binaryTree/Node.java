@@ -1,6 +1,7 @@
 package edu.polymath.raval.binaryTree;
 
 public class Node<T extends Comparable<T>> {
+
   T data;
   Node<T> left;
   Node<T> right;

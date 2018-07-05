@@ -1,7 +1,5 @@
 package edu.polymath.raval.dynamicProgramming;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class LongestPalindromicSubSequenceTest {

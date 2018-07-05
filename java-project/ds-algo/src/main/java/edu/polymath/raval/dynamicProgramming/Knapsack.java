@@ -28,14 +28,14 @@ public class Knapsack {
       System.out.println(Arrays.toString(line));
     }
 
-    int i = outputMatrix.length-1;
-    int j = outputMatrix[0].length-1;
-    while(i>0 && j>0){
-      if(outputMatrix[i][j] == outputMatrix[i-1][j]){
+    int i = outputMatrix.length - 1;
+    int j = outputMatrix[0].length - 1;
+    while (i > 0 && j > 0) {
+      if (outputMatrix[i][j] == outputMatrix[i - 1][j]) {
         i--;
-      }else{
-        items[i-1].selected = true;
-        j = j - items[i-1].weight;
+      } else {
+        items[i - 1].selected = true;
+        j = j - items[i - 1].weight;
         i--;
       }
     }

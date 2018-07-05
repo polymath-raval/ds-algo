@@ -11,6 +11,14 @@ public class BinaryTreeToLinkedList<T extends Comparable<T>> {
 
   }
 
+  public static <T extends Comparable<T>> Node<T> inorder(BinarySearchTree<T> bst) {
+    return new BinaryTreeToLinkedList<T>().inOrderChange(bst.root);
+  }
+
+  public static <T extends Comparable<T>> Node<T> breadthFirst(BinarySearchTree<T> bst) {
+    return new BinaryTreeToLinkedList<T>().breadthFirstChange(bst.root);
+  }
+
   private Node<T> inOrderChange(Node<T> current) {
     if (current == null) {
       return lastNode;
@@ -29,35 +37,27 @@ public class BinaryTreeToLinkedList<T extends Comparable<T>> {
     return lastNode;
   }
 
-  private Node<T> breadthFirstChange(Node<T> root){
+  private Node<T> breadthFirstChange(Node<T> root) {
     Queue<Node<T>> queue = new LinkedList<>();
-    if(root != null){
+    if (root != null) {
       queue.offer(root);
     }
     Node<T> last = null;
-    while(!queue.isEmpty()){
+    while (!queue.isEmpty()) {
       Node<T> current = queue.remove();
-      if(current.left != null){
+      if (current.left != null) {
         queue.offer(current.left);
       }
-      if(current.right != null){
+      if (current.right != null) {
         queue.offer(current.right);
       }
       current.left = last;
-      if(last != null){
+      if (last != null) {
         last.right = current;
       }
       last = current;
     }
     return root;
-  }
-
-  public static <T extends Comparable<T>> Node<T> inorder(BinarySearchTree<T> bst) {
-    return new BinaryTreeToLinkedList<T>().inOrderChange(bst.root);
-  }
-
-  public static <T extends Comparable<T>> Node<T> breadthFirst(BinarySearchTree<T> bst) {
-    return new BinaryTreeToLinkedList<T>().breadthFirstChange(bst.root);
   }
 
 }

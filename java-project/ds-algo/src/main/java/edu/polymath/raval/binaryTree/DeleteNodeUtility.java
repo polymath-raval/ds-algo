@@ -38,7 +38,7 @@ public class DeleteNodeUtility<T extends Comparable<T>> {
 
   private boolean removeNodeWhenNoChild() {
     if (dataNode.left == null && dataNode.right == null) {
-      if(parentNode == null){
+      if (parentNode == null) {
         throw new RuntimeException("Unhandled situation");
       } else if (parentNode.left != null && parentNode.left.data == dataNode.data) {
         dataNode.data = null;
@@ -99,7 +99,6 @@ public class DeleteNodeUtility<T extends Comparable<T>> {
     }
     return false;
   }
-
 
 
 }
