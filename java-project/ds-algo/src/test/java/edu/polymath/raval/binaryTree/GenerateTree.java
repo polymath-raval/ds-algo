@@ -1,111 +1,68 @@
 package edu.polymath.raval.binaryTree;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class GenerateTree {
-  public static AVLTree generateAVLMedium(){
+
+
+  final static int[] mediumInput = new int[]{100, 50, 200, 25, 75, 150, 250, 10, 30, 60, 80, 300, 5,
+      27, 250, 4, 3, 2, 1, 89, 81, 82, 85};
+  final static int[] shortInput = new int[]{100, 50, 200, 25, 75, 150, 250, 60, 80, 300};
+
+  public static int idealMediumInputHeight(){
+    int i=0;
+    while(Math.pow(2,i) < GenerateTree.mediumInput.length){i++;}
+    return i;
+  }
+
+  public static int idealShortInputHeight(){
+    int i=0;
+    while(Math.pow(2,i) < GenerateTree.shortInput.length){i++;}
+    return i;
+  }
+
+  public static AVLTree generateAVLMedium(BiConsumer<AVLTree<Integer>, Integer> insert) {
     AVLTree<Integer> avl = new AVLTree<>();
-    avl.insertUnbalanced(100);
-    avl.insertUnbalanced(50);
-    avl.insertUnbalanced(200);
-    avl.insertUnbalanced(25);
-    avl.insertUnbalanced(75);
-    avl.insertUnbalanced(150);
-    avl.insertUnbalanced(250);
-    avl.insertUnbalanced(10);
-    avl.insertUnbalanced(30);
-    avl.insertUnbalanced(60);
-    avl.insertUnbalanced(80);
-    avl.insertUnbalanced(300);
-    avl.insertUnbalanced(5);
-    avl.insertUnbalanced(27);
-    avl.insertUnbalanced(250);
-    avl.insertUnbalanced(4);
-    avl.insertUnbalanced(3);
-    avl.insertUnbalanced(2);
-    avl.insertUnbalanced(1);
-    avl.insertUnbalanced(89);
-    avl.insertUnbalanced(81);
-    avl.insertUnbalanced(82);
-    avl.insertUnbalanced(85);
+    Arrays.stream(mediumInput).forEach(i -> insert.accept(avl, i));
+    return avl;
+  }
+
+  public static AVLTree generateAVLMedium1(BiConsumer<AVLTree<Integer>, Integer> insert) {
+    AVLTree<Integer> avl = new AVLTree<>();
+    Arrays.stream(mediumInput).sorted().forEach(i -> insert.accept(avl, i));
     return avl;
   }
 
   public static BinarySearchTree generateBSTMedium() {
     BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-    bst.insert(100);
-    bst.insert(50);
-    bst.insert(200);
-    bst.insert(25);
-    bst.insert(75);
-    bst.insert(150);
-    bst.insert(250);
-    bst.insert(10);
-    bst.insert(30);
-    bst.insert(60);
-    bst.insert(80);
-    bst.insert(300);
-    bst.insert(5);
-    bst.insert(27);
-    bst.insert(250);
-    bst.insert(4);
-    bst.insert(3);
-    bst.insert(2);
-    bst.insert(1);
-    bst.insert(89);
-    bst.insert(81);
-    bst.insert(82);
-    bst.insert(85);
+    Arrays.stream(mediumInput).forEach(bst::insert);
     return bst;
   }
 
-  public static AVLTree generateAVLShort(BiConsumer<AVLTree<Integer>, Integer> insert){
+  public static AVLTree generateAVLShort(BiConsumer<AVLTree<Integer>, Integer> insert) {
     AVLTree<Integer> avl = new AVLTree<>();
-    insert.accept(avl, 100);
-    insert.accept(avl, 50);
-    insert.accept(avl, 200);
-    insert.accept(avl, 25);
-    insert.accept(avl, 75);
-    insert.accept(avl, 150);
-    insert.accept(avl, 250);
-    insert.accept(avl, 60);
-    insert.accept(avl, 80);
-    insert.accept(avl, 300);
+    Arrays.stream(shortInput).forEach(i -> insert.accept(avl, i));
     return avl;
   }
 
-  public static AVLTree generateAVLShort1(BiConsumer<AVLTree<Integer>, Integer> insert){
-
+  public static AVLTree generateAVLShort1(BiConsumer<AVLTree<Integer>, Integer> insert) {
     AVLTree<Integer> avl = new AVLTree<>();
-    insert.accept(avl, 25);
-    insert.accept(avl, 50);
-    insert.accept(avl, 60);
-    insert.accept(avl, 80);
-    insert.accept(avl, 75);
-    insert.accept(avl, 100);
-    insert.accept(avl, 200);
-    insert.accept(avl, 150);
-    insert.accept(avl, 250);
-    insert.accept(avl, 300);
+    Arrays.stream(shortInput).sorted().forEach(i -> insert.accept(avl, i));
     return avl;
   }
 
-
-
+  public static AVLTree generateAVLShort2(BiConsumer<AVLTree<Integer>, Integer> insert) {
+    AVLTree<Integer> avl = new AVLTree<>();
+    Arrays.stream(shortInput).mapToObj(Integer::valueOf).sorted(Collections.reverseOrder())
+        .forEach(i -> insert.accept(avl, i));
+    return avl;
+  }
 
   public static BinarySearchTree generateBSTShort() {
     BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-    bst.insert(100);
-    bst.insert(50);
-    bst.insert(200);
-    bst.insert(25);
-    bst.insert(75);
-    bst.insert(150);
-    bst.insert(250);
-    bst.insert(60);
-    bst.insert(80);
-    bst.insert(300);
+    Arrays.stream(shortInput).forEach(i -> bst.insert(i));
     return bst;
   }
 

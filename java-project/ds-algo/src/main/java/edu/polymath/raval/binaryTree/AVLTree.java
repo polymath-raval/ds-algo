@@ -19,8 +19,16 @@ public class AVLTree<T extends Comparable<T>> {
   }
 
   public void balance() {
-    computeBalanceFactor();
-    root = balance(root);
+    do{
+      root = balance(root);
+      computeBalanceFactor();
+    }while(!isBalanced(root));
+  }
+
+  private boolean isBalanced(AVLTreeNode<T> _root){
+    return _root == null ? true :
+        (_root.balanceFactor >= -1 && _root.balanceFactor <= 1) &&
+            isBalanced(_root.left) && isBalanced(_root.right);
   }
 
   private void insertUnbalanced(AVLTreeNode<T> _root, AVLTreeNode<T> _dataNode) {
@@ -48,9 +56,8 @@ public class AVLTree<T extends Comparable<T>> {
     } else {
       _root.left = balance(_root.left);
       _root.right = balance(_root.right);
-      while (!(_root.balanceFactor >= -1 && _root.balanceFactor <= 1)) {
+      if (!(_root.balanceFactor >= -1 && _root.balanceFactor <= 1)) {
         _root = applyRotation(_root);
-        computeBalanceFactor(_root);
       }
       return _root;
     }
@@ -108,7 +115,7 @@ public class AVLTree<T extends Comparable<T>> {
     return result;
   }
 
-  private void computeBalanceFactor() {
+  void computeBalanceFactor() {
     computeBalanceFactor(root);
   }
 
@@ -146,7 +153,34 @@ public class AVLTree<T extends Comparable<T>> {
     if (node.right instanceof AVLTreeNode) {
       print((AVLTreeNode<T>) node.right, prefix + (isTail ? "    " : "│   "), true);
     }
-
   }
 
+  public boolean isValidBinaryTree() {
+    return isValidBinaryTree(root);
+  }
+
+  private boolean isValidBinaryTree(AVLTreeNode<T> _root) {
+    if (_root == null) {
+      return true;
+    } else {
+      int leftComparision = _root.left == null ? 1 :
+          _root.data.compareTo(_root.left.data);
+
+      int rightComparision = _root.right == null ? -1 :
+          _root.data.compareTo(_root.right.data);
+
+      boolean isCurrentTreeAValidBinaryTree = leftComparision > 0 && rightComparision < 0;
+
+      return isCurrentTreeAValidBinaryTree && isValidBinaryTree(_root.left)
+          && isValidBinaryTree(_root.right);
+    }
+  }
+
+  public int height(){
+    return height(root);
+  }
+
+  private int height(AVLTreeNode<T> _root){
+   return _root == null ? 0 : 1 + Integer.max(height(_root.left), height(_root.right));
+  }
 }
