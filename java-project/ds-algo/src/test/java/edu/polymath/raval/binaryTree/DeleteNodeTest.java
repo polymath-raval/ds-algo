@@ -1,6 +1,6 @@
 package edu.polymath.raval.binaryTree;
 
-import edu.polymath.raval.binaryTree.BinarySearchTree.TraversalType;
+import edu.polymath.raval.binaryTree.TraversalUtility.TraversalType;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.collections4.CollectionUtils;

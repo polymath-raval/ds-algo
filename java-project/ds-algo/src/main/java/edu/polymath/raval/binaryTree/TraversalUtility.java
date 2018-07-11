@@ -1,10 +1,10 @@
 package edu.polymath.raval.binaryTree;
 
-import edu.polymath.raval.binaryTree.BinarySearchTree.TraversalType;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 class TraversalUtility<T extends Comparable<T>> {
 
@@ -49,6 +49,27 @@ class TraversalUtility<T extends Comparable<T>> {
     }
   }
 
+  private void zigzagTraversal(Node<T> _root, List<T> _result) {
+    Stack<Node<T>> readStack = new Stack<>();
+    Stack<Node<T>> writeStack = new Stack<>();
+    readStack.push(_root);
+    while (!readStack.isEmpty() || !writeStack.isEmpty()) {
+      if (readStack.isEmpty()) {
+        while (!writeStack.isEmpty()) {
+          readStack.push(writeStack.pop());
+        }
+      }
+      Node<T> node = readStack.pop();
+      if (node.right != null) {
+        writeStack.push(node.right);
+      }
+      if (node.left != null) {
+        writeStack.push(node.left);
+      }
+      _result.add(node.data);
+    }
+  }
+
   List<T> traverse(Node<T> _root, TraversalType _type) {
     List<T> _result = new ArrayList<>();
     switch (_type) {
@@ -64,7 +85,17 @@ class TraversalUtility<T extends Comparable<T>> {
       case DEPTH_FIRST_POSTORDER:
         postOrderTraversal(_root, _result);
         break;
+      case ZIGZAG:
+        zigzagTraversal(_root, _result);
     }
     return _result;
+  }
+
+  public enum TraversalType {
+    BREADTH_FIRST,
+    DEPTH_FIRST_INORDER,
+    DEPTH_FIRST_PREORDER,
+    DEPTH_FIRST_POSTORDER,
+    ZIGZAG;
   }
 }

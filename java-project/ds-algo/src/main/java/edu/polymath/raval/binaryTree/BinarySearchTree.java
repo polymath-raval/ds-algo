@@ -1,5 +1,6 @@
 package edu.polymath.raval.binaryTree;
 
+import edu.polymath.raval.binaryTree.TraversalUtility.TraversalType;
 import java.util.List;
 
 public class BinarySearchTree<T extends Comparable<T>> {
@@ -59,7 +60,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     return heightFromNode(root);
   }
 
-  private int heightFromNode(Node _root) {
+  int heightFromNode(Node _root) {
     return _root == null ? 0 :
         1 + Integer.max(heightFromNode(_root.left), heightFromNode(_root.right));
   }
@@ -84,10 +85,5 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
   }
 
-  public enum TraversalType {
-    BREADTH_FIRST,
-    DEPTH_FIRST_INORDER,
-    DEPTH_FIRST_PREORDER,
-    DEPTH_FIRST_POSTORDER;
-  }
+
 }

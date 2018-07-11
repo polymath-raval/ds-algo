@@ -1,6 +1,6 @@
 package edu.polymath.raval.binaryTree;
 
-import edu.polymath.raval.binaryTree.BinarySearchTree.TraversalType;
+import edu.polymath.raval.binaryTree.TraversalUtility.TraversalType;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.collections4.ListUtils;
@@ -40,5 +40,15 @@ public class TraversalTest {
     Assert.assertTrue(ListUtils.isEqualList(precomputedResults,
         tree.traverse(TraversalType.BREADTH_FIRST)));
   }
+
+  @Test
+  public void testZigzagTraversal() {
+    BinarySearchTree<Integer> tree = GenerateTree.generateBSTShort();
+    //List<Integer> precomputedResults = Arrays.asList(100, 50, 200, 25, 75, 150, 250, 60, 80, 300);
+    //Assert.assertTrue(ListUtils.isEqualList(precomputedResults,
+    System.out.println(tree.traverse(TraversalType.ZIGZAG));
+    //));
+  }
+
 
 }
