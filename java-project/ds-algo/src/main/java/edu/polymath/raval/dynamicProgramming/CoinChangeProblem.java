@@ -19,7 +19,7 @@ public class CoinChangeProblem {
     for (int i = 1; i < outputMatrix[0].length; i++) {
       outputMatrix[0][i] = 0;
     }
-
+ 
     for (int i = 1; i < outputMatrix.length; i++) {
       for (int j = 1; j < outputMatrix[i].length; j++) {
         final int coinValue = denomination[i - 1];
